@@ -1,0 +1,46 @@
+jenkins setup
+    https://www.jenkins.io/doc/book/installing/linux/
+
+First Java Install (jenkins is a java based)
+
+    sudo apt update
+    sudo apt install fontconfig openjdk-17-jr
+
+
+
+jenkins Install
+
+    sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
+    https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+    echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \
+    https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+    /etc/apt/sources.list.d/jenkins.list > /dev/null
+    sudo apt-get update
+    sudo apt-get install jenkins
+
+    jenkins --version
+
+
+Add a user to jenkins group
+
+    getent group jenkins
+    sudo usermod -aG jenkins $USER 
+
+PORT SETUP ON AWS
+    New rule -> custom tcp -> port number -> 8080 -> my ip
+
+
+Run jenkins in browser
+    http://your-ec2-ip:8080
+
+    then enter a password
+        sudo systemctl status jenkins
+            88c0f46258184096a9d07882492b412a
+
+    pipe line creation
+
+    project clone via github to AWS directory
+        ubuntu@ip-172-31-13-121:/var/lib/jenkins/workspace/two-tier-application-job$ pwd
+            /var/lib/jenkins/workspace/two-tier-application-job
+
+    
