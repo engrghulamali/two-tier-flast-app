@@ -17,7 +17,7 @@ jenkins Install
     /etc/apt/sources.list.d/jenkins.list > /dev/null
     sudo apt-get update
     sudo apt-get install jenkins
-
+    newgrp docker
     jenkins --version
 
 
@@ -43,4 +43,44 @@ Run jenkins in browser
         ubuntu@ip-172-31-13-121:/var/lib/jenkins/workspace/two-tier-application-job$ pwd
             /var/lib/jenkins/workspace/two-tier-application-job
 
+    If i change any thing and push on git, we have to build again on jenkins.
+
+
+If Docker (optional)
+    Now we have to install a docker on aws
+    sudo apt update
+    sudo apt upgrade
+    sudo apt install docker.io -y
+    docker version
+    getent group docker
+    sudo usermod -aG docker $USER
+    newgrp docker
+    sudo usermod -aG docker jenkins
+    newgrp docker
+
+    sudo systemctl restart docker
+    sudo systemctl restart jenkins\
+
+    sudo apt install docker-compose-v2
+
+Run docker on ec2 via a pipeline
+    sh "docker compose up -d"
+
+
+if dokcer rm all images/conainters/volumes
+
+    # Stop all running containers
+        docker stop $(docker ps -aq)  
+
+    # Remove all containers
+        docker rm $(docker ps -aq)    
     
+    #remove all images
+        docker rmi $(docker images -q) -f
+
+    #remove all volumes
+        docker volume rm $(docker volume ls -q)
+ 
+    #if remove all things (note: conatiner must stop)
+        docker system prune -a --volumes -f
+
