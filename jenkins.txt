@@ -4,7 +4,7 @@ jenkins setup
 First Java Install (jenkins is a java based)
 
     sudo apt update
-    sudo apt install fontconfig openjdk-17-jr
+    sudo apt install fontconfig openjdk-17-jre
 
 
 
@@ -84,3 +84,8 @@ if dokcer rm all images/conainters/volumes
     #if remove all things (note: conatiner must stop)
         docker system prune -a --volumes -f
 
+
+
+
+Git stash all changes
+    git stash -u
