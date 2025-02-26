@@ -17,7 +17,8 @@ pipeline {
         stage('Build Application') {
             steps {
                 sh 'echo "Building the application..."'
-                // sh 'docker build -t two-tier-flask-app .'
+                //sh 'docker build -t two-tier-flask-app .'  //for local machine
+                sh 'docker compose up --build -d'           // for production
             }
         }
 
@@ -31,7 +32,8 @@ pipeline {
         stage('Deploy Application') {
             steps {
                 sh 'echo "Deploying the application..."'
-                // sh 'docker run -d -p 5000:5000 two-tier-flask-app'
+                //sh 'docker run -d -p 5000:5000 two-tier-flask-app' // for local machine
+                sh 'docker compose restart'                       // for production
             }
         }
     }
