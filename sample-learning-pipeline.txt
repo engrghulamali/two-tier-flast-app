@@ -19,6 +19,7 @@ pipeline {
                 sh 'echo "Building the application..."'
                 //sh 'docker build -t two-tier-flask-app .'  //for local machine
                 sh 'docker compose up --build -d'           // for production
+                sh 'docker compose up -d --build flask-app'           // for production
             }
         }
 
